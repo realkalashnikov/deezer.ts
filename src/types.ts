@@ -161,3 +161,63 @@ export interface DeezerSearchOptions {
   index?: number;
   limit?: number;
 }
+
+export interface DeezerPodcast {
+  id: number;
+  title: string;
+  description: string;
+  available: boolean;
+  rating: number;
+  fans: number;
+  link: string;
+  share: string;
+  picture: string;
+  picture_small: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
+  type: 'podcast';
+}
+
+export interface DeezerEpisode {
+  id: number;
+  title: string;
+  description: string;
+  available: boolean;
+  release_date: string;
+  duration: number;
+  link: string;
+  share: string;
+  picture: string;
+  picture_small: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
+  podcast: DeezerPodcast;
+  type: 'episode';
+}
+
+export interface DeezerRadio {
+  id: number;
+  title: string;
+  description: string;
+  share: string;
+  picture: string;
+  picture_small: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
+  tracklist: string;
+  type: 'radio';
+}
+
+export interface DeezerEditorial {
+  id: number;
+  name: string;
+  picture: string;
+  picture_small: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
+  type: 'editorial';
+}
