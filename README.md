@@ -1,22 +1,22 @@
 # deezer.ts
 
-Um client gigantesco, fortemente tipado e com zero dependências para a API do Deezer. Feito para TypeScript e Node.js/Bun.
+A massive, strongly typed, zero-dependency client for the Deezer API. Built for TypeScript and Node.js/Bun.
 
-## Características
+## Features
 
-- 🛡️ **100% de Cobertura e Tipagem**: Engloba Álbuns, Artistas, Tracks, Playlists, Usuários, Podcasts, Episódios, Rádios, Gêneros, Editoriais e Busca Avançada. Tudo mapeado.
-- 📦 **Zero Dependências**: Usa apenas o `fetch` nativo. Ideal para Edge e Serverless.
-- 🚦 **Rate Limiting Embutido**: Evite ser bloqueado pela API do Deezer. Gerenciamento automático da fila de requisições sob o limite de 50 req/s.
-- 🚀 **Cache Inteligente na Memória**: Evite chamadas desnecessárias guardando as respostas.
-- 🔌 **Interceptadores Customizados**: Adicione lógica antes e depois de cada request da API.
+- 🛡️ **100% Coverage and Typing**: Covers Albums, Artists, Tracks, Playlists, Users, Podcasts, Episodes, Radios, Genres, Editorials, and Advanced Search. Everything is mapped.
+- 📦 **Zero Dependencies**: Uses only native `fetch`. Ideal for Edge and Serverless.
+- 🚦 **Built-in Rate Limiting**: Avoid getting blocked by the Deezer API. Automatic request queue management under the 50 req/s limit.
+- 🚀 **Smart In-Memory Cache**: Avoid unnecessary calls by caching responses.
+- 🔌 **Custom Interceptors**: Add logic before and after each API request.
 
-## Instalação
+## Installation
 
 ```bash
 npm install github:realkalashnikov/deezer.ts
 ```
 
-## Uso Básico
+## Basic Usage
 
 ```typescript
 import { DeezerClient } from 'deezer.ts';
@@ -24,28 +24,28 @@ import { DeezerClient } from 'deezer.ts';
 const client = new DeezerClient();
 
 async function run() {
-  // Buscar o perfil do artista, seus top tracks e álbuns
+  // Fetch artist profile, their top tracks and albums
   const artist = await client.artists.get(13); // Eminem
   const topTracks = await client.artists.getTop(13);
   
-  // Pegar as rádios relacionadas e fãs
+  // Get related radios and fans
   const radio = await client.artists.getRadio(13);
   const fans = await client.artists.getFans(13);
 
-  // Podcasts e Histórico de Usuário (Flow)
+  // Podcasts and User History (Flow)
   const flow = await client.users.getFlow(123456);
   const podcast = await client.podcasts.get(123);
   
-  // Busca avançada
+  // Advanced search
   const searchResults = await client.search.track('artist:"eminem" track:"lose yourself"');
 }
 
 run();
 ```
 
-## Tratamento de Erros
+## Error Handling
 
-A biblioteca lança erros do tipo `DeezerError` mapeados quando a API retorna falha.
+The library throws `DeezerError` mapped errors when the API returns a failure.
 
 ```typescript
 import { DeezerError } from 'deezer.ts';
@@ -54,10 +54,10 @@ try {
   await client.albums.get(9999999999);
 } catch (error) {
   if (error instanceof DeezerError) {
-    console.error(`Deu ruim na API! Código: ${error.code} - ${error.message}`);
+    console.error(`API failed! Code: ${error.code} - ${error.message}`);
   }
 }
 ```
 
-## Licença
+## License
 MIT

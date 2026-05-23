@@ -10,7 +10,7 @@ describe('DeezerClient', () => {
     client.clearCache();
   });
 
-  it('deve instanciar com todas as propriedades', () => {
+  it('should instantiate with all properties', () => {
     expect(client.albums).toBeDefined();
     expect(client.artists).toBeDefined();
     expect(client.charts).toBeDefined();
@@ -20,7 +20,7 @@ describe('DeezerClient', () => {
     expect(client.users).toBeDefined();
   });
 
-  it('deve conseguir buscar um artista (Eminem)', async () => {
+  it('should be able to fetch an artist (Eminem)', async () => {
     const fetchSpy = spyOn(globalThis, 'fetch').mockImplementation(async () => {
       return new Response(JSON.stringify({
         id: 13,
@@ -39,7 +39,7 @@ describe('DeezerClient', () => {
     fetchSpy.mockRestore();
   });
 
-  it('deve lançar um DeezerError quando a API retorna erro (ex: artista não existe)', async () => {
+  it('should throw a DeezerError when the API returns an error (e.g., artist does not exist)', async () => {
     const fetchSpy = spyOn(globalThis, 'fetch').mockImplementation(async () => {
       return new Response(JSON.stringify({
         error: {
@@ -48,7 +48,7 @@ describe('DeezerClient', () => {
           code: 800
         }
       }), {
-        status: 200, // O Deezer muitas vezes retorna 200 mesmo com erro no payload
+        status: 200, // Deezer often returns 200 even with an error in the payload
         headers: { 'Content-Type': 'application/json' }
       });
     });
