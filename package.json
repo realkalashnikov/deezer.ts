@@ -1,5 +1,5 @@
 {
-  "name": "deezer.ts",
+  "name": "@rafaelsilvadeveloper/deezer.ts",
   "version": "1.0.0",
   "description": "Um client TypeScript fortemente tipado e com zero dependências para a API do Deezer",
   "main": "dist/index.js",
