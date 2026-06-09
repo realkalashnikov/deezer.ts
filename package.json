@@ -1,6 +1,6 @@
 {
   "name": "@rafaelsilvadeveloper/deezer.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A strongly typed, zero-dependency TypeScript client wrapper for the Deezer API",
   "repository": {
     "type": "git",
